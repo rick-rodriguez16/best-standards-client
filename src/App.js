@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState }from 'react'
 
 function App() {
+
+  const [standards, setStandards] = useState([{}])
+
+  useEffect(() => {
+    fetch('/api/best_standards/standards').then(
+      response => response.json()
+    ).then(
+      data => {
+        setStandards(data)
+      }
+    )
+  }, [])
+
+  //console.log(standards[0].full_standard);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {(typeof standards[0].full_standard === 'undefined') ? (
+          <p>Loading...</p>
+       ): (
+          standards.full_standard.map((fullStandard, i) => (
+            <p key={i}>{fullStandard}</p>
+          ))
+       )}
+      
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
