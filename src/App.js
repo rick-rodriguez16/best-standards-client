@@ -1,12 +1,14 @@
 import React from 'react'
-import List from './components/List'
+import Standard from './components/Standards'
+import Benchmark from './components/Benchmarks'
 
 function App() {  
 
   return (
     <div>
     
-      <List />
+      <Standard />
+      <Benchmark />
       
     </div>
   )
