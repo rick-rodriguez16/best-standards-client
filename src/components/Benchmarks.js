@@ -14,7 +14,6 @@ function Benchmark() {
     )
     }, [])
 
-
     console.log(benchmarks);
 
     return (
@@ -23,12 +22,19 @@ function Benchmark() {
             {(typeof benchmarks[0].full_benchmark === 'undefined') ? (
                 <p>Loading...</p>
             ): (
-                benchmarks.filter(e => e.full_benchmark === 'MA.3.NSO.1.3')
-
-
-
-
-               )
+                benchmarks.filter(benchmark => benchmark.full_benchmark === 'MA.3.NSO.1.3').map(filteredbenchmark =>
+                    <div className="filtered-benchmark-info" key={filteredbenchmark.full_benchmark}>
+                        <p className="benchmark-name">Benchmark: {filteredbenchmark.full_benchmark}</p>
+                        <p className="benchmark-definition">Definition: {filteredbenchmark.benchmark_def}</p>
+                        <div className="benchmark-clarifications">Clarifications: 
+                            <ul>
+                                <li>
+                                    {filteredbenchmark.clarifications}
+                                </li>
+                            </ul>                        
+                        </div>
+                    </div>
+                ))
             }
         </div>
   )
