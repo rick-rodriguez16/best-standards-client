@@ -19,6 +19,7 @@ function Standard() {
 
     return (
         <div>
+            <p>Standard List</p>
             {(typeof standards[0].full_standard === 'undefined') ? (
                 <p>Loading...</p>
             ): (
