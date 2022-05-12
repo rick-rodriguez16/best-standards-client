@@ -22,18 +22,51 @@ function Benchmark() {
             {(typeof benchmarks[0].full_benchmark === 'undefined') ? (
                 <p>Loading...</p>
             ): (
-                benchmarks.filter(benchmark => benchmark.full_benchmark === 'MA.3.NSO.1.3').map(filteredbenchmark =>
-                    <div className="filtered-benchmark-info" key={filteredbenchmark.full_benchmark}>
+                benchmarks.filter(benchmark => benchmark.full_benchmark === 'MA.3.NSO.1.3').map(filteredbenchmark => {
+                    return (
+                    <div className="filtered-benchmark-header" key={filteredbenchmark.full_benchmark}>
                         <p className="benchmark-name">Benchmark: {filteredbenchmark.full_benchmark}</p>
-                        <p className="benchmark-definition">Definition: {filteredbenchmark.benchmark_def}</p>
-                        <div className="benchmark-clarifications">Clarifications: 
-                            <ul>
+                        <p className="benchmark-emphases"> Emphases: </p>                        
+                        {filteredbenchmark.emphases.split(', ').map(e => {
+                            return (
                                 <li>
-                                    {filteredbenchmark.clarifications}
+                                    {e /* uuid needed */}
                                 </li>
-                            </ul>                        
-                        </div>
+                            )
+                        })}
+
+                        <p className="benchmark-definition">Definition: {filteredbenchmark.benchmark_def}</p>
+                        <p className="benchmark-examples">Examples: </p>
+                        {filteredbenchmark.examples.split(', ').map(e => {
+                            return (
+                                <li>
+                                    {e /* uuid needed */}
+                                </li>
+                            )
+                        })}
+
+                        <p className="benchmark-clarifications">Clarifications: </p>
+                        {filteredbenchmark.clarifications.split(', Clarification: ').map(e => {
+                            return (
+                                <li>
+                                    {e /* uuid needed */}
+                                </li>
+                            )
+                        })}
+
+                        <p className="benchmark-terms">Terms: </p>
+                        {filteredbenchmark.terms.split(', ').map(e => {
+                            return (
+                                <li>
+                                    {e /* uuid needed */}
+                                </li>
+                            )
+                        })}                        
+
+<                       p className="benchmark-purpose">Definition: {filteredbenchmark.purpose}</p>
+
                     </div>
+                    )}
                 ))
             }
         </div>
