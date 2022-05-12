@@ -63,7 +63,16 @@ function Benchmark() {
                             )
                         })}                        
 
-<                       p className="benchmark-purpose">Definition: {filteredbenchmark.purpose}</p>
+                        <p className="benchmark-purpose">Purpose: {filteredbenchmark.purpose}</p>
+
+                        <p className="benchmark-misconceptions">Misconceptions: </p>
+                        {filteredbenchmark.misconceptions.split(', Misconception: ').map(e => {
+                            return (
+                                <li>
+                                    {e /* uuid needed */}
+                                </li>
+                            )
+                        })}
 
                     </div>
                     )}
