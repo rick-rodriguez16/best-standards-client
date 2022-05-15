@@ -1,24 +1,24 @@
-import React, { useEffect, useState }from 'react'
+import React, { useEffect, useState } from 'react'
+import {v4 as uuid} from 'uuid';
 
 function Benchmark() {
 
     const [benchmarks, setBenchmarks] = useState([{}])
 
     useEffect(() => {
-    fetch('/api/best_standards/benchmarks').then(
-        response => response.json()
-    ).then(
-        data => {
-            setBenchmarks(data)
-        }
-    )
-    }, [])
+        fetch('/api/best_standards/benchmarks').then(
+            response => response.json()
+        ).then(
+            data => {
+                setBenchmarks(data)
+            }
+        )
+        }, [])
 
     console.log(benchmarks);
 
     return (
         <div>
-            <p>Benchmark List</p>
             {(typeof benchmarks[0].full_benchmark === 'undefined') ? (
                 <p>Loading...</p>
             ): (
@@ -29,8 +29,8 @@ function Benchmark() {
                         <p className="benchmark-emphases"> Emphases: </p>                        
                         {filteredbenchmark.emphases.split(', ').map(e => {
                             return (
-                                <li>
-                                    {e /* uuid needed */}
+                                <li key={uuid}>
+                                    {e}
                                 </li>
                             )
                         })}
@@ -39,8 +39,8 @@ function Benchmark() {
                         <p className="benchmark-examples">Examples: </p>
                         {filteredbenchmark.examples.split(', ').map(e => {
                             return (
-                                <li>
-                                    {e /* uuid needed */}
+                                <li key={uuid}>
+                                    {e}
                                 </li>
                             )
                         })}
@@ -48,8 +48,8 @@ function Benchmark() {
                         <p className="benchmark-clarifications">Clarifications: </p>
                         {filteredbenchmark.clarifications.split(', Clarification: ').map(e => {
                             return (
-                                <li>
-                                    {e /* uuid needed */}
+                                <li key={uuid}>
+                                    {e}
                                 </li>
                             )
                         })}
@@ -57,8 +57,8 @@ function Benchmark() {
                         <p className="benchmark-terms">Terms: </p>
                         {filteredbenchmark.terms.split(', ').map(e => {
                             return (
-                                <li>
-                                    {e /* uuid needed */}
+                                <li key={uuid}>
+                                    {e}
                                 </li>
                             )
                         })}                        
@@ -68,8 +68,8 @@ function Benchmark() {
                         <p className="benchmark-misconceptions">Misconceptions: </p>
                         {filteredbenchmark.misconceptions.split(', Misconception: ').map(e => {
                             return (
-                                <li>
-                                    {e /* uuid needed */}
+                                <li key={uuid}>
+                                    {e}
                                 </li>
                             )
                         })}
