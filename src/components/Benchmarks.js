@@ -15,8 +15,6 @@ function Benchmark() {
         )
         }, [])
 
-    //console.log(benchmarks);
-
     return (
         <div>
             {(typeof benchmarks[0].full_benchmark === 'undefined') ? (
@@ -26,8 +24,7 @@ function Benchmark() {
                     return (
                         <div className="filtered-benchmark-header" key={filteredBenchmark.full_benchmark}>
                             <p className="benchmark-name">Benchmark: {filteredBenchmark.full_benchmark}</p>                            
-                            <p className="benchmark-emphases"> Emphases: </p>                        
-                                <GenerateBenchmarkList column='emphases' row={filteredBenchmark.emphases} />
+                            <GenerateBenchmarkList column='emphases' row={filteredBenchmark.emphases} />
                             <p className="benchmark-definition">Definition: {filteredBenchmark.benchmark_def}</p>
                             <GenerateBenchmarkList column='examples' row={filteredBenchmark.examples} />
                             <GenerateBenchmarkList column='clarifications' row={filteredBenchmark.clarifications} />
