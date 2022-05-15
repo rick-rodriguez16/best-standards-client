@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {v4 as uuid} from 'uuid';
+import GenerateBenchmarkList from './GenerateBenchmarkList'
 
 function Benchmark() {
 
@@ -15,66 +15,26 @@ function Benchmark() {
         )
         }, [])
 
-    console.log(benchmarks);
+    //console.log(benchmarks);
 
     return (
         <div>
             {(typeof benchmarks[0].full_benchmark === 'undefined') ? (
                 <p>Loading...</p>
             ): (
-                benchmarks.filter(benchmark => benchmark.full_benchmark === 'MA.3.NSO.1.3').map(filteredbenchmark => {
+                benchmarks.filter(benchmark => benchmark.full_benchmark === 'MA.3.NSO.1.3').map(filteredBenchmark => {
                     return (
-                    <div className="filtered-benchmark-header" key={filteredbenchmark.full_benchmark}>
-                        <p className="benchmark-name">Benchmark: {filteredbenchmark.full_benchmark}</p>
-                        <p className="benchmark-emphases"> Emphases: </p>                        
-                        {filteredbenchmark.emphases.split(', ').map(e => {
-                            return (
-                                <li key={uuid}>
-                                    {e}
-                                </li>
-                            )
-                        })}
-
-                        <p className="benchmark-definition">Definition: {filteredbenchmark.benchmark_def}</p>
-                        <p className="benchmark-examples">Examples: </p>
-                        {filteredbenchmark.examples.split(', ').map(e => {
-                            return (
-                                <li key={uuid}>
-                                    {e}
-                                </li>
-                            )
-                        })}
-
-                        <p className="benchmark-clarifications">Clarifications: </p>
-                        {filteredbenchmark.clarifications.split(', Clarification: ').map(e => {
-                            return (
-                                <li key={uuid}>
-                                    {e}
-                                </li>
-                            )
-                        })}
-
-                        <p className="benchmark-terms">Terms: </p>
-                        {filteredbenchmark.terms.split(', ').map(e => {
-                            return (
-                                <li key={uuid}>
-                                    {e}
-                                </li>
-                            )
-                        })}                        
-
-                        <p className="benchmark-purpose">Purpose: {filteredbenchmark.purpose}</p>
-
-                        <p className="benchmark-misconceptions">Misconceptions: </p>
-                        {filteredbenchmark.misconceptions.split(', Misconception: ').map(e => {
-                            return (
-                                <li key={uuid}>
-                                    {e}
-                                </li>
-                            )
-                        })}
-
-                    </div>
+                        <div className="filtered-benchmark-header" key={filteredBenchmark.full_benchmark}>
+                            <p className="benchmark-name">Benchmark: {filteredBenchmark.full_benchmark}</p>                            
+                            <p className="benchmark-emphases"> Emphases: </p>                        
+                                <GenerateBenchmarkList column='emphases' row={filteredBenchmark.emphases} />
+                            <p className="benchmark-definition">Definition: {filteredBenchmark.benchmark_def}</p>
+                            <GenerateBenchmarkList column='examples' row={filteredBenchmark.examples} />
+                            <GenerateBenchmarkList column='clarifications' row={filteredBenchmark.clarifications} />
+                            <GenerateBenchmarkList column='terms' row={filteredBenchmark.terms} />
+                            <p className="benchmark-purpose">Purpose: {filteredBenchmark.purpose}</p>
+                            <GenerateBenchmarkList column='misconceptions' row={filteredBenchmark.misconceptions} />
+                        </div>
                     )}
                 ))
             }
@@ -83,14 +43,3 @@ function Benchmark() {
 }
 
 export default Benchmark
-
-/*
-
-benchmarks.map((fullBenchmark) => (
-                    <div className="benchmark-info" key={fullBenchmark.full_benchmark}>
-                    <p className="benchmark-name">Benchmark: {fullBenchmark.full_benchmark}</p>
-                    <p className="benchmark-def">Definition: {fullBenchmark.benchmark_def}</p>
-                    <br></br>
-                    </div>
-                ))
-*/
