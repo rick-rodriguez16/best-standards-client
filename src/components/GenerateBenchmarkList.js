@@ -1,10 +1,10 @@
 import React from 'react'
 import {v4 as uuid} from 'uuid';
 
-function GenerateBenchmarkList ({column, row}) {
+function GenerateBenchmarkList ({benchmarkKey, benchmarkValue}) {
 
-    if(column === 'emphases') {
-        const emphasesList = row.split(', ').map(e => <li key={uuid()}>{e}</li>);
+    if(benchmarkKey === 'emphases') {
+        const emphasesList = benchmarkValue.split(', ').map(e => <li key={uuid()}>{e}</li>);
         return (
             <>
                 <p className="benchmark-emphases"> Emphases: </p>
@@ -13,11 +13,11 @@ function GenerateBenchmarkList ({column, row}) {
         );
     }
 
-    if(column === 'examples') {
-        if (row === '') { 
+    if(benchmarkKey === 'examples') {
+        if (benchmarkValue === '') { 
             return 
         } else {
-            const examplesList = row.split(', Example: ').map(e => <li key={uuid()}>{e}</li>);
+            const examplesList = benchmarkValue.split(', Example: ').map(e => <li key={uuid()}>{e}</li>);
             return (
                 <>
                     <p className="benchmark-examples">Examples: </p>
@@ -27,11 +27,11 @@ function GenerateBenchmarkList ({column, row}) {
         }
     }
 
-    if(column === 'clarifications') {
-        if (row === '') { 
+    if(benchmarkKey === 'clarifications') {
+        if (benchmarkValue === '') { 
             return 
         } else {
-            const clarificationsList = row.split(', Clarification: ').map(e => <li key={uuid()}>{e}</li>);
+            const clarificationsList = benchmarkValue.split(', Clarification: ').map(e => <li key={uuid()}>{e}</li>);
             return (
                 <>
                     <p className="benchmark-clarifications">Clarifications: </p>
@@ -41,11 +41,11 @@ function GenerateBenchmarkList ({column, row}) {
         }
     }
 
-    if(column === 'terms') {
-        if (row === '') { 
+    if(benchmarkKey === 'terms') {
+        if (benchmarkValue === '') { 
             return 
         } else {
-            const termsList = row.split(', ').map(e => <li key={uuid()}>{e}</li>);
+            const termsList = benchmarkValue.split(', ').map(e => <li key={uuid()}>{e}</li>);
             return (
                 <>
                     <p className="benchmark-terms">Terms: </p>
@@ -55,11 +55,11 @@ function GenerateBenchmarkList ({column, row}) {
         }
     }
 
-    if(column === 'misconceptions') {
-        if (row === '') { 
+    if(benchmarkKey === 'misconceptions') {
+        if (benchmarkValue === '') { 
             return 
         } else {
-            const misconceptionsList = row.split(', Misconception: ').map(e => <li key={uuid()}>{e}</li>);
+            const misconceptionsList = benchmarkValue.split(', Misconception: ').map(e => <li key={uuid()}>{e}</li>);
             return (
                 <>
                     <p className="benchmark-misconceptions">Misconceptions: </p>

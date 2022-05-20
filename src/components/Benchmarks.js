@@ -20,17 +20,19 @@ function Benchmark() {
             {(typeof benchmarks[0].full_benchmark === 'undefined') ? (
                 <p>Loading...</p>
             ): (
-                benchmarks.filter(benchmark => benchmark.full_benchmark === 'MA.3.NSO.1.3').map(filteredBenchmark => {
-                    return (
-                        <div className="filtered-benchmark-header" key={filteredBenchmark.full_benchmark}>
-                            <p className="benchmark-name">Benchmark: {filteredBenchmark.full_benchmark}</p>                            
-                            <GenerateBenchmarkList column='emphases' row={filteredBenchmark.emphases} />
-                            <p className="benchmark-definition">Definition: {filteredBenchmark.benchmark_def}</p>
-                            <GenerateBenchmarkList column='examples' row={filteredBenchmark.examples} />
-                            <GenerateBenchmarkList column='clarifications' row={filteredBenchmark.clarifications} />
-                            <GenerateBenchmarkList column='terms' row={filteredBenchmark.terms} />
-                            <p className="benchmark-purpose">Purpose: {filteredBenchmark.purpose}</p>
-                            <GenerateBenchmarkList column='misconceptions' row={filteredBenchmark.misconceptions} />
+                benchmarks.filter(benchmark => benchmark.full_benchmark === 'MA.3.NSO.1.4').map(filteredBenchmark => {
+                    return ( 
+                        <div className="jumbotron filtered-benchmark-header" key={filteredBenchmark.full_benchmark}>
+                            <p className="display-4 benchmark-name">{filteredBenchmark.full_benchmark}</p>                            
+                            <GenerateBenchmarkList benchmarkKey='emphases' benchmarkValue={filteredBenchmark.emphases} />
+                            <p className="benchmark-definition">Definition:</p>
+                                <p>{filteredBenchmark.benchmark_def}</p>
+                            <GenerateBenchmarkList benchmarkKey='examples' benchmarkValue={filteredBenchmark.examples} />
+                            <GenerateBenchmarkList benchmarkKey='clarifications' benchmarkValue={filteredBenchmark.clarifications} />
+                            <GenerateBenchmarkList benchmarkKey='terms' benchmarkValue={filteredBenchmark.terms} />
+                            <p className="benchmark-purpose">Purpose:</p>
+                                <p>{filteredBenchmark.purpose}</p>
+                            <GenerateBenchmarkList benchmarkKey='misconceptions' benchmarkValue={filteredBenchmark.misconceptions} />
                         </div>
                     )}
                 ))
