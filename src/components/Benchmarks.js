@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import GenerateBenchmarkList from './GenerateBenchmarkList'
+import React, { useEffect, useState } from 'react';
+import GenerateBenchmarkList from './GenerateBenchmarkList';
 
 function Benchmark() {
 
