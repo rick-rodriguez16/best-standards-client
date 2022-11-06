@@ -20,7 +20,7 @@ function Benchmark() {
             {(typeof benchmarks[0].full_benchmark === 'undefined') ? (
                 <p>Loading...</p>
             ): (
-                benchmarks.filter(benchmark => benchmark.full_benchmark === 'MA.3.NSO.1.4').map(filteredBenchmark => {
+                benchmarks.filter(benchmark => benchmark.full_benchmark === 'MA.3.NSO.1.1').map(filteredBenchmark => {
                     return ( 
                         <div className="jumbotron filtered-benchmark-header" key={filteredBenchmark.full_benchmark}>
                             <p className="display-4 benchmark-name">{filteredBenchmark.full_benchmark}</p>                            
